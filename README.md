@@ -1,9 +1,9 @@
 # 🚀 SaaS Stack
 
 ## 📦 Frontend
-- React
-- Next.js
-- Vue
+- ReactJS
+- NextJS
+- VueJS
 - Tailwind CSS
 - Shadcn UI
 
