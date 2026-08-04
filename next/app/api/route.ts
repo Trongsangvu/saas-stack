@@ -1,9 +1,12 @@
 import { apiService } from "../../features/services/api-service";
 import { errorMessage, errorResponse, successResponse } from "../../lib/api/response";
+import { parseQueryParams } from "../../lib/utils";
 
 export async function GET(request: Request) {
   try {
-    const params = "params";
+    const { searchParams } = new URL(request.url);
+    const params = parseQueryParams(searchParams);
+
     const data = await apiService.get(params);
     return successResponse(data);
   } catch (error) {
@@ -31,7 +34,7 @@ export async function PUT(request: Request) {
   }
 }
 
-export async function DELETE(request: Request) {
+export async function DELETE(_: Request) {
   try {
     const id = "id";
     const data = await apiService.delete(id);

@@ -1,24 +1,29 @@
 import { API_ENDPOINTS } from "../../app/constants/endpoints";
 import { apiFetch } from "../../lib/api/api-fetch";
-import { ExampleType } from "../types/example-type";
+import { generateQueryString } from "../../lib/utils";
+import { CreateExampleRequest, ExampleResponse, GetExampleParams } from "../types/example-type";
 
 export const apiService = {
-  async get(params: any) {
-    const url = API_ENDPOINTS.example;
-    return apiFetch<ExampleType>(url);
+  async get(params: GetExampleParams) {
+    const queryString = generateQueryString(params);
+
+    const url = `${API_ENDPOINTS.example}?${queryString}`;
+    return apiFetch<ExampleResponse>(url, {
+      cache: "no-store"
+    });
   },
 
-  async post(data: any) {
+  async post(data: CreateExampleRequest) {
     const url = API_ENDPOINTS.example;
-    return apiFetch<ExampleType>(url, {
+    return apiFetch<ExampleResponse>(url, {
       method: 'POST',
       body: JSON.stringify(data),
     });
   },
 
-  async put(data: any) {
+  async put(data: CreateExampleRequest) {
     const url = API_ENDPOINTS.example;
-    return apiFetch<ExampleType>(url, {
+    return apiFetch<ExampleResponse>(url, {
       method: 'PUT',
       body: JSON.stringify(data),
     });
