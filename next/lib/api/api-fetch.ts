@@ -1,14 +1,21 @@
 import { ApiError } from "./errors";
 
+type NextFetchInit = RequestInit & {
+  next?: {
+    revalidate?: number | false;
+    tags?: string[];
+  };
+};
+
 export async function apiFetch<T>(
   input: RequestInfo,
-  init?: RequestInit
+  init?: NextFetchInit
 ): Promise<T> {
   const res = await fetch(input, {
     ...init,
     headers: {
       "Content-Type": "application/json",
-      ...(init?.headers || {}),
+      ...(init?.headers ?? {}),
     },
   });
 
