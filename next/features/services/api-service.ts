@@ -1,4 +1,4 @@
-import { API_ENDPOINTS } from "../../app/constants/endpoints";
+import { API_ENDPOINTS } from "../../constants/endpoints";
 import { apiFetch } from "../../lib/api/api-fetch";
 import { generateQueryString } from "../../lib/utils";
 import { CreateExampleRequest, ExampleResponse, GetExampleParams } from "../types/example-type";
