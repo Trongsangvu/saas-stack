@@ -1,4 +1,4 @@
-// import { NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
 type ApiError = {
   message?: string;
@@ -6,7 +6,7 @@ type ApiError = {
 };
 
 // Placeholder for NextResponse, replace with actual import in your project
-let NextResponse: any;
+// let NextResponse: any;
 
 export function successResponse<T>(data: T, status = 200) {
   return NextResponse.json(
